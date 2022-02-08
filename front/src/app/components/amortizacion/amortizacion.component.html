@@ -1,0 +1,51 @@
+<ng-http-loader [backdropBackgroundColor]="'#3289a8'" [spinner]="spinnerStyle.skThreeBounce">
+</ng-http-loader>
+
+<div class="jumbotron jumbotron-fluid animated fadeIn fast">
+    <div class="container">
+        <h1 class="display-4">Tabla de amortizacion</h1>
+    </div>
+</div>
+
+<div class="container animated fadeIn">
+    <div class="row">
+        <button type="button" class="btn btn-outline-secondary" (click)="regresa()"><i class="bi bi-chevron-left"></i> Regresar</button>
+    </div>
+
+    <div class="row">
+        <h4>Cliente: {{ nombre }}</h4>
+    </div>
+
+    <div class="row">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">No. Pago</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Prestamo</th>
+                    <th scope="col">Interes</th>
+                    <th scope="col">Abono</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pago of pagos">
+                    <td>
+                        {{ pago['no-pago'] }}
+                    </td>
+                    <td>
+                        {{ pago.fecha | date }}
+                    </td>
+                    <td>
+                        {{ pago.prestamo | currency }}
+                    </td>
+                    <td>
+                        {{ pago.interes | currency }}
+                    </td>
+                    <td>
+                        {{ pago.abono | currency }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

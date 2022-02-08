@@ -1,0 +1,60 @@
+<ng-http-loader [backdropBackgroundColor]="'#3289a8'" [spinner]="spinnerStyle.skThreeBounce">
+</ng-http-loader>
+
+<div class="jumbotron jumbotron-fluid animated fadeIn fast">
+    <div class="container">
+        <h1 class="display-4">Registro de prestamos</h1>
+    </div>
+</div>
+
+<div class="container animated fadeIn">
+    <form>
+        <div class="row mb-3 mx-2">
+            <label>Buscar Cliente:</label>
+        </div>
+
+        <div class="row justify-content-between">
+            <div class="input-group mb-3 col-8">
+                <input type="text" class="form-control" solo-letras maxlength="100" (paste)="false" (keypress)="inCliente($event)" (change)="buscarCliente()" #inputCliente name="cliente" [(ngModel)]="cliente">
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="button" (click)="buscarCliente()">Buscar</button>
+                </div>
+            </div>
+
+            <div class="input group mb-3 col-3">
+                <button type="button" class="btn btn-primary" (click)="prestamo()">Agregar Prestamo</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Monto del prestamo</th>
+                        <th scope="col">Plazos</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let prestamo of prestamos">
+                        <td>
+                            {{ prestamo.cliente }}
+                        </td>
+                        <td>
+                            {{ prestamo.monto_prestamo | currency }}
+                        </td>
+                        <td>
+                            {{ prestamo.plazos }}
+                        </td>
+                        <td>
+                            <button (click)="[amortizacion( prestamo.cliente, prestamo.monto_prestamo, prestamo.plazos )]">
+                                <i class="bi bi-list"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>

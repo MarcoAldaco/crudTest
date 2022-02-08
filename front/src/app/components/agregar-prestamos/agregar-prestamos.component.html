@@ -1,0 +1,50 @@
+<div class="jumbotron jumbotron-fluid animated fadeIn fast">
+    <div class="container">
+        <h1 class="display-4">Agregar Prestamo</h1>
+    </div>
+</div>
+
+<div class="container animated fadeIn">
+    <form action="">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="">Nombre:</label>
+                <input type="text" class="form-control" required maxlength="100" (paste)="false" solo-letras name="nombre" [(ngModel)]="nombre">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="">Apellido:</label>
+                <input type="text" class="form-control" required maxlength="100" (paste)="false" solo-letras name="apellido" [(ngModel)]="apellido">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputMonto">Monto</label>
+                <select id="inputMonto" class="form-control" required name="monto" [(ngModel)]="monto">
+                    <option selected disabled value="0"></option>
+                    <option *ngFor="let monto of montos" value="{{ monto.id_monto }}">
+                        {{ monto.monto | currency }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputPlazo">Plazos</label>
+                <select id="inputPlazo" class="form-control" required name="plazo" [(ngModel)]="plazo">
+                    <option selected disabled></option>
+                    <option>2</option>
+                    <option>4</option>
+                    <option>6</option>
+                    <option>8</option>
+                    <option>10</option>
+                    <option>12</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <button type="submit" class="btn btn-outline-success" (click)="guardar()">Guardar</button>
+            <button type="button" class="btn btn-outline-danger" (click)="regresa()">Cancelar</button>
+        </div>
+    </form>
+</div>
